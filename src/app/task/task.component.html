@@ -1,0 +1,46 @@
+<div class="task">
+  <form class="tasks" [formGroup]="form" (ngSubmit)="submit()">
+    <h4 *ngIf="increatemode">Create Task</h4>
+    <h4 *ngIf="!increatemode">Edit Task</h4>
+    <input
+      type="text"
+      placeholder="title"
+      class="title"
+      required
+      formControlName="title"
+    />
+    <div class="container">
+      <input type="date" id="due" required formControlName="due" />
+      <select name="status" id="status" required formControlName="status">
+        <option value="" disabled selected>Select your option</option>
+        <option value="planned">Planned</option>
+        <option value="started">Started</option>
+        <option value="Done">Done</option>
+      </select>
+    </div>
+    <!-- <label for="Assign">Choose a car:</label> -->
+    <select name="name" id="name" required formControlName="name">
+      <option value="" disabled selected>Select your option</option>
+      <option value="Jenny">Jenny</option>
+      <option value="James">James</option>
+      <option value="Jane">Jane</option>
+    </select>
+    <div class="container_bottom">
+      <button
+        class="save"
+        type="submit"
+        [disabled]="form.invalid"
+        *ngIf="increatemode"
+      >
+        Save
+      </button>
+      <button
+        class="save"
+        [disabled]="form.invalid"
+        *ngIf="!increatemode"
+      >Save</button>
+      <button class="cancel" (click)="setval()">Cancel</button>
+      <button class="cancel" routerLink="/">taxpage</button>
+    </div>
+  </form>
+</div>
